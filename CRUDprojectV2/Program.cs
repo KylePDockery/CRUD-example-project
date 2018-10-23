@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json.Linq;
-
+using System.Threading;
 namespace CRUDprojectV2
 {
     class Program
@@ -9,6 +9,7 @@ namespace CRUDprojectV2
         static void Main(string[] args)
         {
             ProductRepository repo = new ProductRepository();
+            Thread.Sleep(20);
             Console.WriteLine("Welcome to Best Buy! I understand you're here to  update are catalogue.\n" +
                 "Let's get started with showing you the current catalogue.");
             
