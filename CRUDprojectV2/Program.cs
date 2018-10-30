@@ -2,6 +2,8 @@
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using System.Collections.Generic;
+
 namespace CRUDprojectV2
 {
     class Program
@@ -13,7 +15,13 @@ namespace CRUDprojectV2
             Console.WriteLine("Welcome to Best Buy! I understand you're here to  update are catalogue.\n" +
                 "Let's get started with showing you the current catalogue.");
             
-            repo.ReadCatalogue();  //read
+            List<Product> products = repo.ReadCatalogue();  //read
+
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.Name + " " + product.Price);
+            }
+
             Console.ReadLine();
             Console.WriteLine("\nOkay, so I was informed you needed to add a product, what's it called?");
             Product createdProduct = new Product();

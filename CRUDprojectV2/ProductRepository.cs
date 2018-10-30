@@ -39,7 +39,7 @@ namespace CRUDprojectV2
                 cmd.ExecuteNonQuery();
             }
         }
-        public void ReadCatalogue()//read
+        public List<Product> ReadCatalogue()//read
         {
             MySqlConnection conn = new MySqlConnection(connStr);
 
@@ -59,10 +59,8 @@ namespace CRUDprojectV2
                     product.Price = (decimal)dr["price"];
                     products.Add(product);
                 }
-                foreach (var product in products)
-                {
-                    Console.WriteLine(product.Name + " " + product.Price);
-                }
+
+                return products;
             }
         }
 
