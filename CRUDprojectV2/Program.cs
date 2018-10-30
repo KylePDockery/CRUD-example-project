@@ -16,7 +16,6 @@ namespace CRUDprojectV2
                 "Let's get started with showing you the current catalogue.");
             
             List<Product> products = repo.ReadCatalogue();  //read
-
             foreach (var product in products)
             {
                 Console.WriteLine(product.Name + " " + product.Price);
@@ -29,8 +28,14 @@ namespace CRUDprojectV2
             Console.WriteLine("Okay, what about the price?\n");
             createdProduct.Price = Console.Read();
             repo.CreateProduct(createdProduct.Name, createdProduct.Price, 1); //create
+
             Console.WriteLine($"Okay, that completes the addition of {createdProduct.Name}. Let's make sure it went through.");
-            repo.ReadCatalogue();
+            products = repo.ReadCatalogue();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.Name + " " + product.Price);
+            }
+
             Console.WriteLine($"\nGreat! \n{createdProduct.Name} was properly created...\nNow we need to remove a product. " +
                 $"You can just tell me the name of the product you want to removed.");
             Console.ReadLine();
@@ -38,8 +43,13 @@ namespace CRUDprojectV2
             deletedProduct.Name = Console.ReadLine();
 
             repo.DeleteProductByName(deletedProduct.Name);  //delete
+
             Console.WriteLine("Let's make sure the update went through...");
-            repo.ReadCatalogue();
+            products = repo.ReadCatalogue();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.Name + " " + product.Price);
+            }
             Console.ReadLine();
 
             Product updatedProduct = new Product();
