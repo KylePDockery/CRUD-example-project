@@ -15,15 +15,15 @@ namespace CRUDprojectV2
             
             repo.ReadCatalogue();  //read
             Console.ReadLine();
-            Console.WriteLine("\n Okay, so I was informed you needed to add a product, what's it called?");
+            Console.WriteLine("\nOkay, so I was informed you needed to add a product, what's it called?");
             Product createdProduct = new Product();
             createdProduct.Name = Console.ReadLine();
             Console.WriteLine("Okay, what about the price?\n");
-
+            createdProduct.Price = Console.Read();
             repo.CreateProduct(createdProduct.Name, createdProduct.Price, 1); //create
             Console.WriteLine($"Okay, that completes the addition of {createdProduct.Name}. Let's make sure it went through.");
             repo.ReadCatalogue();
-            Console.WriteLine($"\nGreat! \n{createdProduct.Name} was properly created...\n but now we need to remove a product. " +
+            Console.WriteLine($"\nGreat! \n{createdProduct.Name} was properly created...\nNow we need to remove a product. " +
                 $"You can just tell me the name of the product you want to removed.");
             Console.ReadLine();
             Product deletedProduct = new Product();
@@ -35,7 +35,7 @@ namespace CRUDprojectV2
             Console.ReadLine();
 
             Product updatedProduct = new Product();
-            Console.WriteLine("\n Fantastic!\n As a way of saying thanks, the GM said you can set the price of any product you want.\n" +
+            Console.WriteLine("\nFantastic!\nAs a way of saying thanks, the GM said you can set the price of any product you want.\n" +
                 "So what product do you want to alter?.");
             updatedProduct.Name = Console.ReadLine();
             Console.WriteLine("And what is the new price going to be ? ");
