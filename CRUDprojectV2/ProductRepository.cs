@@ -14,7 +14,7 @@ namespace CRUDprojectV2
 #if DEBUG
             string jsonText = File.ReadAllText("appsettings.development.json");
 #else
-            string jsonText = File.ReadAllText("appestings.release.json")
+            string jsonText = File.ReadAllText("appesttings.release.json")
 #endif
             string connStr = JObject.Parse(jsonText)["ConnectionStrings"]["DefaultConnection"].ToString();
 
