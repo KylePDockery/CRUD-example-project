@@ -14,7 +14,11 @@ namespace CRUDprojectV2
 #if DEBUG
             string jsonText = File.ReadAllText("appsettings.development.json");
 #else
+<<<<<<< HEAD
             string jsonText = File.ReadAllText("appesttings.release.json")
+=======
+            string jsonText = File.ReadAllText("appsettings.release.json")
+>>>>>>> fe1f394c906248ea6f277336e391e58aa7197902
 #endif
             string connStr = JObject.Parse(jsonText)["ConnectionStrings"]["DefaultConnection"].ToString();
 
@@ -39,7 +43,7 @@ namespace CRUDprojectV2
                 cmd.ExecuteNonQuery();
             }
         }
-        public void ReadCatalogue()//read
+        public List<Product> ReadCatalogue()//read
         {
             MySqlConnection conn = new MySqlConnection(connStr);
 
@@ -59,10 +63,8 @@ namespace CRUDprojectV2
                     product.Price = (decimal)dr["price"];
                     products.Add(product);
                 }
-                foreach (var product in products)
-                {
-                    Console.WriteLine(product.Name + " " + product.Price);
-                }
+
+                return products;
             }
         }
 
